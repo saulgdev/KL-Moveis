@@ -9,7 +9,7 @@ import { User } from "./user.entitie";
 import { RealEstate } from "./realEstate.entitie";
 
 @Entity()
-export class Schedules {
+export class Schedule {
   @PrimaryGeneratedColumn()
   id: number;
 

@@ -26,7 +26,7 @@ describe("POST /users", () => {
     await connection.destroy();
   });
 
-  it.only("Success: Must be able to create a user - Full body", async () => {
+  it("Success: Must be able to create a user - Full body", async () => {
     const response = await supertest(app)
       .post(baseUrl)
       .send(createUserRouteMock.userComplete);

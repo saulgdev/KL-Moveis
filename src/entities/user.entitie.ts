@@ -20,7 +20,7 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  @Column({ select: false })
+  @Column()
   password: string;
 
   @BeforeInsert()
@@ -28,18 +28,18 @@ export class User {
     this.password = await bcrypt.hash(this.password, 8);
   }
 
-  @Column()
-  isAdm: boolean;
+  @Column({ default: false })
+  admin: boolean;
 
   @Column({ default: true })
   isActive: boolean;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: "date" })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: "date" })
   updatedAt: Date;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ type: "date" })
   deletedAt: Date;
 }
