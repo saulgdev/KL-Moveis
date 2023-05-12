@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { verifyAuth, verifyCategory } from "../middleware";
+import {
+  verifyAuth,
+  verifyCategory,
+  verifyCategoryExists,
+} from "../middleware";
 import {
   createCategory,
   getCategory,
@@ -10,4 +14,8 @@ export const categoryRouter = Router();
 
 categoryRouter.post("/categories", verifyAuth, verifyCategory, createCategory);
 categoryRouter.get("/categories", getCategory);
-categoryRouter.get("/categories/:id/realEstate", getCategoryRealEstate);
+categoryRouter.get(
+  "/categories/:id/realEstate",
+  verifyCategoryExists,
+  getCategoryRealEstate
+);
